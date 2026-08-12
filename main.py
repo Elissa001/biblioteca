@@ -17,9 +17,9 @@ def menu():
     if opcao == 1:
         titulo = input ("Digite o título: ")
         autor = input ("Digite o autor: ")
-        codigo = input("Digite o código:")
+        codigo = input("Digite o código: ")
         ano = input ("Digite o ano: ")
         cadastro_livros(titulo, autor, codigo, ano)
-        rint ("livro cadastrado!")
+        rint ("Livro cadastrado!")
    
 menu()
