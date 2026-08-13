@@ -94,12 +94,7 @@ def menu():
             # Empresta um livro disponível 
             titulo = input("Digite o título do livro: ")
             livro = buscar_livro(titulo)
-            print("Títlo digitado:", titulo)
-            print("Livros na lista:", livros)
-            print("Resultado na busca:", livro)
-            print(livro)
             if livro:
-                print("STATUS:", repr(livro["status"]))
                 if livro["status"] == "Disponivel":
                     livro["status"] = "Emprestado"
                     salvar_livros(livros)
