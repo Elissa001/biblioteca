@@ -29,6 +29,17 @@ def salvar_livros(livros):
         escritor.writerow(livro)
     arquivo.close()
 
+def carregar_livros():
+    try:
+        arquivo = open(ARQUIVO, 'r')
+        leitor = csv.DictReader(arquivo)
+        livros_carregar = []
+        for livro in leitor: 
+            livros_carregados.append(livro)
+        arquivo.close()
+        return livros_carregados 
+    except FileNotFound
+
 def menu():
     while True:
         print("Menu")
