@@ -111,6 +111,7 @@ def menu():
             if livro: 
                 if livro["status"] == "Emprestado":
                     livro["status"] = "Disponivel"
+                    salvar_livros(livros)
                     print("Livro devolvido.")
                 else: 
                     print("O livro já está disponível.")
