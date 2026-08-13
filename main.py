@@ -38,7 +38,17 @@ def carregar_livros():
             livros_carregados.append(livro)
         arquivo.close()
         return livros_carregados 
-    except FileNotFound
+    except FileNotFoundError: 
+        return []
+
+def listar_livros(livros):
+    for livro in livros:
+        print(livro)
+    return livros 
+
+def ordenar_livros(livros, criterio):
+    livros_ordenados = sorted(livros, key=lambda livro: livro[criterio])
+    return livros_ordenados
 
 def menu():
     while True:
@@ -47,7 +57,9 @@ def menu():
         print("2 - Listar livros")
         print("3 - Buscar livro")
         print("4 - Emprestar livro")
-        print("5 - Sair")
+        print("5 - Devolver livro")
+        print("6 - Ordenar livros")
+        print("7 - Sair")
 
         opcao = int(input("Digite a opção selecionada: "))
 
@@ -86,6 +98,9 @@ def menu():
                 print("Livro não encontrado!")
 
         elif opcao == 5:
+            
+
+        elif opcao == 7:
             print("Programa encerrado!")
             break
 menu()
