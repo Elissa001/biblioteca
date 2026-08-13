@@ -20,13 +20,23 @@ def buscar_livro(titulo):
             return livro
     return None
 
+def salvar_livros(livros):
+    arquivo = open(ARQUIVO, 'w')
+    fieldnames = ["titulo", "autor", "codigo", "ano", "status"]
+    escritor = csv.DictWriter(arquivo, fieldnames=fieldnames)
+    escritor.writeheader()
+    for livro in livros: 
+        escritor.writerow(livro)
+    arquivo.close()
+
 def menu():
     while True:
         print("Menu")
         print("1 - Cadastro de livros")
         print("2 - Listar livros")
         print("3 - Buscar livro")
-        print("4 - Sair")
+        print("4 - Emprestar livro")
+        print("5 - Sair")
 
         opcao = int(input("Digite a opção selecionada: "))
 
@@ -37,6 +47,7 @@ def menu():
             ano = input ("Digite o ano: ")
 
             cadastro_livros(titulo, autor, codigo, ano)
+            salvar_livros(livros)
             print ("Livro cadastrado!")
 
         elif opcao == 2: 
@@ -52,6 +63,18 @@ def menu():
                 print("Livro não econtrado!")
 
         elif opcao == 4: 
+            titulo = input("Digite o título do livro: ")
+            livro = buscar_livro(titulo)
+            if livro:
+                if livro["status"] == "Disponível":
+                    livro["status"] = "Emprestado"
+                    print("Livro emprestado!")
+                else:
+                    print("Livro já está emprestado!")
+            else:
+                print("Livro não encontrado!")
+
+        elif opcao == 5:
             print("Programa encerrado!")
             break
 menu()
